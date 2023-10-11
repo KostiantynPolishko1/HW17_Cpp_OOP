@@ -1,23 +1,20 @@
-#include <iostream>
-using std::string;
-using std::cout;
 
 #include "Atom.h"
 #include "Molecule.h"
+#include "OutPut.h"
 
 
 int main(void) {
 
-	Atom O(16), H(1);
-	Molecule O2(O);
-	Molecule H2(H);
-
-	Molecule H2O = H2 + O2; // element = molecule + molecule
-
-	Atom C(14);
-	Molecule CO2(O2 + C); // element = molecule + atom
-
-	cout << CO2.getMassMolecula() << "\n";
+	cout << "\noperator of SUM";
+	Molecule C(Atom(6)); // element = molecule + atom
+	Atom O(8);
+	Molecule CO(C + O);
+	Molecule CO2(C + Molecule(O, 2));
+	cout << "\nMolecule + Atom\n";
+	moleculeOutPut(CO);
+	cout << "\nMolecule + Molecule\n";
+	moleculeOutPut(CO2);
 
 	return 0;
 }

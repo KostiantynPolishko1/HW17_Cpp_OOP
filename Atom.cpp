@@ -44,12 +44,12 @@ short* Atom::initElectronLevel(short* _arrElectron, short _atomNumber, short _at
 }
 ;
 
-string Atom::getAtomSymbol() const
+std::string Atom::getAtomSymbol() const
 {
     return _atomSymbol;
 }
 ;
-string Atom::getAtomName() const
+std::string Atom::getAtomName() const
 {
     return this->_atomName;
 }

@@ -2,6 +2,7 @@
 
 #ifndef MOLECULE
 #define MOLECULE
+
 #include "Atom.h"
 
 class Molecule
@@ -10,22 +11,22 @@ private:
 	Atom _atom1;
 
 	float _sumAtomMass;
-	string _formulaElement;
-	string _nameElement;
+	std::string _formulaElement;
+	std::string _nameElement;
 
 public:
 	Molecule() : _sumAtomMass{}, _formulaElement{ "NO FORMULA" }, _nameElement{ "NO ELEMENT" } {
 		_atom1 = {};
 	}
-	;
 
-	Molecule(Atom atom1) {
-		_sumAtomMass = atom1.getAtomMass();
-		_formulaElement = atom1.getAtomSymbol();
+	Molecule(const Atom& atom1, short numberAtom = 1) 
+	{
+		_sumAtomMass = (numberAtom < 1 ? 1 : numberAtom) * atom1.getAtomMass();
+		_formulaElement = atom1.getAtomSymbol() + (numberAtom == 1 ? "" : std::to_string(numberAtom));
 		_nameElement = atom1.getAtomName();
 	}
-	
-	Molecule(float sumAtomMass, string formulaElement, string nameElement) 
+
+	Molecule(float sumAtomMass, std::string formulaElement, std::string nameElement)
 	{
 		_sumAtomMass = sumAtomMass;
 		_formulaElement = formulaElement;
@@ -33,28 +34,16 @@ public:
 	}
 
 	Molecule(const Molecule& molecule) : _atom1(molecule._atom1), _sumAtomMass(molecule._sumAtomMass),
-		_nameElement(molecule._nameElement) {}
+		_formulaElement(molecule._formulaElement), _nameElement(molecule._nameElement) {}
 
 #pragma region operators
-	Molecule operator+ (const Molecule& molecule)
-	{
-		float sumAtomMass = _atom1.getAtomMass() + molecule._atom1.getAtomMass();
-		string formulaElement = _atom1.getAtomSymbol() + molecule._atom1.getAtomSymbol();
-		string nameElement = _atom1.getAtomName() + molecule._atom1.getAtomName();
+	Molecule operator+ (const Molecule& molecule);
 
-		return Molecule(sumAtomMass, formulaElement, nameElement);
-	}
-
-	Molecule operator+ (const Atom& atom1)
-	{
-		float sumAtomMass = _sumAtomMass + atom1.getAtomMass();
-		string formulaElement = _formulaElement + atom1.getAtomSymbol();
-		string nameElement = _nameElement + atom1.getAtomName();
-
-		return Molecule(sumAtomMass, formulaElement, nameElement);
-	}
+	Molecule operator+ (const Atom& atom1);
 
 	float getMassMolecula() const;
+	std::string getFormulaElement() const;
+	std::string getNameElement() const;
 }
 ;
 #endif

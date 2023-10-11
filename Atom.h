@@ -2,13 +2,15 @@
 
 #ifndef ATOM_H
 #define ATOM_H
+
 #include "DataBase.h"
+#include <string>
 
 class Atom
 {
 private:
-	string _atomSymbol;
-	string _atomName;
+	std::string _atomSymbol;
+	std::string _atomName;
 	short _atomNumber;
 	short _atomNProton;
 	short _atomNNeitron;
@@ -34,10 +36,9 @@ public:
 			_atomNElectron = atomNumber;
 			_atomEnergyLevel = initEnergyLevel(atomNumber);
 
-			atomNumber--;
-			_atomSymbol = arrAtomName[atomNumber][0];
-			_atomName = arrAtomName[atomNumber][1];
-			_atomMass = arrAtomMass[atomNumber];
+			_atomSymbol = arrAtomName[_atomNumber-1][0];
+			_atomName = arrAtomName[_atomNumber-1][1];
+			_atomMass = arrAtomMass[_atomNumber-1];
 			_atomNNeitron = (short)(_atomMass)-_atomNumber;
 			_arrElectron = initElectronLevel(_arrElectron, _atomNumber, _atomEnergyLevel);
 		}
@@ -46,14 +47,14 @@ public:
 	}
 
 	~Atom() {
-		if (_arrElectron != NULL || _arrElectron == nullptr) {
+		if (_arrElectron) {
 			delete[] _arrElectron;
 			_arrElectron = nullptr;
 		}
 	}
 
-	string getAtomSymbol() const;
-	string getAtomName() const;
+	std::string getAtomSymbol() const;
+	std::string getAtomName() const;
 	short getAtomNumber();
 	short getAtomNProton();
 	short getAtomNNeitron();

@@ -130,11 +130,14 @@
     <ClCompile Include="Atom.cpp" />
     <ClCompile Include="HW12_Cpp_OOP.cpp" />
     <ClCompile Include="Molecule.cpp" />
+    <ClCompile Include="MoleculeOperators.cpp" />
+    <ClCompile Include="OutPut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Atom.h" />
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="Molecule.h" />
+    <ClInclude Include="OutPut.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
