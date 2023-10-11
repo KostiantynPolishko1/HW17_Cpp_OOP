@@ -29,6 +29,7 @@ Molecule Molecule::operator* (const short count)
 
 	return Molecule(_countMolecule, _sumAtomMass, formulaElement, nameElement);
 }
+;
 Molecule Molecule::operator++()
 {
 	_sumAtomMass += _sumAtomMass / _countMolecule;
@@ -36,10 +37,22 @@ Molecule Molecule::operator++()
 
 	return Molecule(_countMolecule, _sumAtomMass, _formulaElement, _nameElement);
 }
+;
 Molecule Molecule::operator++(int value)
 {
 	_sumAtomMass += _sumAtomMass / _countMolecule;
 	_countMolecule++;
+
+	return Molecule(_countMolecule, _sumAtomMass, _formulaElement, _nameElement);
+}
+Molecule Molecule::operator=(const Molecule& molecule)
+{
+	_sumAtomMass = molecule._sumAtomMass;
+	_countMolecule = molecule._countMolecule;
+	_formulaElement = molecule._formulaElement;
+	_nameElement = molecule._nameElement;
+
+	_atom1 = molecule._atom1;
 
 	return Molecule(_countMolecule, _sumAtomMass, _formulaElement, _nameElement);
 }

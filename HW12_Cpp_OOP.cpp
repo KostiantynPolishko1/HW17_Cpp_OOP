@@ -29,6 +29,12 @@ int main(void) {
 	cout << "\n++Molecule\n";
 	moleculeOutPut(CO2);
 
+	Molecule H2O(Molecule(Atom(1),2) + O);
+	moleculeOutPut(H2O);
+
+	H2O = CO2;
+	moleculeOutPut(H2O);
+
 	return 0;
 }
 ;
