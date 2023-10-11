@@ -1,5 +1,10 @@
 #include "Molecule.h"
 
+float Molecule::getCountMolecula() const
+{
+	return _countMolecule;
+}
+;
 float Molecule::getMassMolecula() const
 {
 	return _sumAtomMass;
