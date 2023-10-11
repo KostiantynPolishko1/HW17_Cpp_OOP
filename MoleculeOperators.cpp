@@ -38,14 +38,14 @@ Molecule Molecule::operator++()
 	return Molecule(_countMolecule, _sumAtomMass, _formulaElement, _nameElement);
 }
 ;
-Molecule Molecule::operator++(int value)
+Molecule Molecule::operator++ (int value)
 {
 	_sumAtomMass += _sumAtomMass / _countMolecule;
 	_countMolecule++;
 
 	return Molecule(_countMolecule, _sumAtomMass, _formulaElement, _nameElement);
 }
-Molecule Molecule::operator=(const Molecule& molecule)
+Molecule Molecule::operator= (const Molecule& molecule)
 {
 	_sumAtomMass = molecule._sumAtomMass;
 	_countMolecule = molecule._countMolecule;
@@ -55,5 +55,14 @@ Molecule Molecule::operator=(const Molecule& molecule)
 	_atom1 = molecule._atom1;
 
 	return Molecule(_countMolecule, _sumAtomMass, _formulaElement, _nameElement);
+}
+bool Molecule::operator== (const Molecule& molecule)
+{
+	bool flag = _sumAtomMass == molecule._sumAtomMass;
+	bool flag2 = _countMolecule == molecule._countMolecule;
+	bool flag3 = _formulaElement == molecule._formulaElement;
+	bool flag4 = _nameElement == molecule._nameElement;
+
+	return (flag && flag2 && flag3 && flag4);
 }
 ;

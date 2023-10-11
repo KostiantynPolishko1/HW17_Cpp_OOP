@@ -43,6 +43,7 @@ public:
 	Molecule operator++ ();
 	Molecule operator++ (int value);
 	Molecule operator= (const Molecule& molecule);
+	bool operator==(const Molecule& molecule);
 
 	float getCountMolecula() const;
 	float getMassMolecula() const;
