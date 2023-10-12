@@ -24,14 +24,6 @@ public:
 		nameElement = atom1.getAtomName();
 	}
 
-	Molecule(short countMolecule, float sumAtomMass, std::string formulaElement, std::string nameElement)
-	{
-		this->countMolecule = countMolecule;
-		this->sumAtomMass = sumAtomMass;
-		this->formulaElement = formulaElement;
-		this->nameElement = nameElement;
-	}
-
 	Molecule(const Molecule& molecule) : atom1(molecule.atom1), countMolecule(molecule.countMolecule), 
 		sumAtomMass(molecule.sumAtomMass),
 		formulaElement(molecule.formulaElement), nameElement(molecule.nameElement) {}
@@ -39,10 +31,10 @@ public:
 #pragma region operators
 	Molecule operator+ (const Molecule& molecule);
 	Molecule operator+ (const Atom& atom1);
-	Molecule operator* (const short multiply);
-	Molecule operator++ ();
-	Molecule operator++ (int value);
-	Molecule operator= (const Molecule& molecule);
+	Molecule& operator* (const short multiply);
+	Molecule& operator++ ();
+	Molecule& operator++ (int value);
+	void operator= (const Molecule& molecule);
 	bool operator==(const Molecule& molecule);
 
 	float getCountMolecula() const;

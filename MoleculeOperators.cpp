@@ -2,67 +2,64 @@
 
 Molecule Molecule::operator+ (const Molecule& molecule)
 {
-	short countMolecule = {1};
-	float sumAtomMass = this->sumAtomMass + molecule.sumAtomMass;
-	std::string formulaElement = this->formulaElement + molecule.formulaElement;
-	std::string nameElement = this->nameElement + molecule.nameElement;
+	Molecule temp;
+	temp.countMolecule = {1};
+	temp.sumAtomMass = this->sumAtomMass + molecule.sumAtomMass;
+	temp.formulaElement = this->formulaElement + molecule.formulaElement;
+	temp.nameElement = this->nameElement + molecule.nameElement;
 
-	return Molecule(countMolecule, sumAtomMass, formulaElement, nameElement);
+	return temp;
 }
 ;
 Molecule Molecule::operator+ (const Atom& atom1)
 {
-	short countMolecule(this->countMolecule);
-	float sumAtomMass = this->sumAtomMass + atom1.getAtomMass();
-	std::string formulaElement = this->formulaElement + atom1.getAtomSymbol();
-	std::string nameElement = this->nameElement + atom1.getAtomName();
+	Molecule temp;
+	temp.countMolecule = this->countMolecule;
+	temp.sumAtomMass = this->sumAtomMass + atom1.getAtomMass();
+	temp.formulaElement = this->formulaElement + atom1.getAtomSymbol();
+	temp.nameElement = this->nameElement + atom1.getAtomName();
 
-	return Molecule(countMolecule, sumAtomMass, formulaElement, nameElement);
+	return temp;
 }
 ;
-Molecule Molecule::operator* (const short countMolecule)
+Molecule& Molecule::operator* (const short countMolecule)
 {
 	this->countMolecule *= (countMolecule < 1 ? 1 : countMolecule);
 	this->sumAtomMass *= (countMolecule < 1 ? 1 : countMolecule);
-	std::string formulaElement = this->formulaElement + std::to_string(countMolecule < 1 ? 1 : countMolecule);
-	std::string nameElement = this->nameElement;
+	this->formulaElement += std::to_string(countMolecule < 1 ? 1 : countMolecule);
+	this->nameElement;
 
-	return Molecule(countMolecule, sumAtomMass, formulaElement, nameElement);
+	return *this;
 }
 ;
-Molecule Molecule::operator++()
+Molecule& Molecule::operator++()
 {
-	sumAtomMass += sumAtomMass / countMolecule;
-	countMolecule++;
+	this->sumAtomMass += sumAtomMass / countMolecule;
+	this->countMolecule++;
 
-	return Molecule(countMolecule, sumAtomMass, formulaElement, nameElement);
+	return *this;
 }
 ;
-Molecule Molecule::operator++ (int value)
+Molecule& Molecule::operator++ (int value)
 {
-	sumAtomMass += sumAtomMass / countMolecule;
-	countMolecule++;
+	Molecule temp(*this);
+	this->sumAtomMass += sumAtomMass / countMolecule;
+	this->countMolecule++;
 
-	return Molecule(countMolecule, sumAtomMass, formulaElement, nameElement);
+	return temp;
 }
-Molecule Molecule::operator= (const Molecule& molecule)
+;
+void Molecule::operator= (const Molecule& molecule)
 {
-	sumAtomMass = molecule.sumAtomMass;
-	countMolecule = molecule.countMolecule;
-	formulaElement = molecule.formulaElement;
-	nameElement = molecule.nameElement;
-
-	atom1 = molecule.atom1;
-
-	return Molecule(countMolecule, sumAtomMass, formulaElement, nameElement);
+	this->sumAtomMass = molecule.sumAtomMass;
+	this->countMolecule = molecule.countMolecule;
+	this->formulaElement = molecule.formulaElement;
+	this->nameElement = molecule.nameElement;
 }
+;
 bool Molecule::operator== (const Molecule& molecule)
 {
-	bool flag = sumAtomMass == molecule.sumAtomMass;
-	bool flag2 = countMolecule == molecule.countMolecule;
-	bool flag3 = formulaElement == molecule.formulaElement;
-	bool flag4 = nameElement == molecule.nameElement;
-
-	return (flag && flag2 && flag3 && flag4);
+	return (this->sumAtomMass == molecule.sumAtomMass && this->countMolecule == molecule.countMolecule &&
+		this->formulaElement == molecule.formulaElement && this->nameElement == molecule.nameElement);
 }
 ;
