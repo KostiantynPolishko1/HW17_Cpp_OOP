@@ -8,33 +8,33 @@
 class Molecule
 {
 private:
-	Atom _atom1;
-	short _countMolecule;
-	float _sumAtomMass;
-	std::string _formulaElement;
-	std::string _nameElement;
+	Atom atom1;
+	short countMolecule;
+	float sumAtomMass;
+	std::string formulaElement;
+	std::string nameElement;
 
 public:
-	Molecule() : _atom1{}, _sumAtomMass{}, _countMolecule{}, _formulaElement{ "NO FORMULA" }, _nameElement{ "NO ELEMENT" } {};
+	Molecule() : atom1{}, sumAtomMass{}, countMolecule{}, formulaElement{ "NO FORMULA" }, nameElement{ "NO ELEMENT" } {};
 
-	Molecule(const Atom& atom1, const short numberAtom = 1) : _countMolecule(1)
+	Molecule(const Atom& atom1, const short numberAtom = 1) : countMolecule(1)
 	{
-		_sumAtomMass = (numberAtom < 1 ? 1 : numberAtom) * atom1.getAtomMass();
-		_formulaElement = atom1.getAtomSymbol() + (numberAtom == 1 ? "" : std::to_string(numberAtom));
-		_nameElement = atom1.getAtomName();
+		sumAtomMass = (numberAtom < 1 ? 1 : numberAtom) * atom1.getAtomMass();
+		formulaElement = atom1.getAtomSymbol() + (numberAtom == 1 ? "" : std::to_string(numberAtom));
+		nameElement = atom1.getAtomName();
 	}
 
 	Molecule(short countMolecule, float sumAtomMass, std::string formulaElement, std::string nameElement)
 	{
-		_countMolecule = countMolecule;
-		_sumAtomMass = sumAtomMass;
-		_formulaElement = formulaElement;
-		_nameElement = nameElement;
+		this->countMolecule = countMolecule;
+		this->sumAtomMass = sumAtomMass;
+		this->formulaElement = formulaElement;
+		this->nameElement = nameElement;
 	}
 
-	Molecule(const Molecule& molecule) : _atom1(molecule._atom1), _countMolecule(molecule._countMolecule), 
-		_sumAtomMass(molecule._sumAtomMass),
-		_formulaElement(molecule._formulaElement), _nameElement(molecule._nameElement) {}
+	Molecule(const Molecule& molecule) : atom1(molecule.atom1), countMolecule(molecule.countMolecule), 
+		sumAtomMass(molecule.sumAtomMass),
+		formulaElement(molecule.formulaElement), nameElement(molecule.nameElement) {}
 
 #pragma region operators
 	Molecule operator+ (const Molecule& molecule);

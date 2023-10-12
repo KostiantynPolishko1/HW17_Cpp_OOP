@@ -2,21 +2,21 @@
 
 float Molecule::getCountMolecula() const
 {
-	return _countMolecule;
+	return countMolecule;
 }
 ;
 float Molecule::getMassMolecula() const
 {
-	return _sumAtomMass;
+	return sumAtomMass;
 }
 ;
 std::string Molecule::getFormulaElement() const
 {
-	return _formulaElement;
+	return formulaElement;
 }
 ;
 std::string Molecule::getNameElement() const
 {
-	return _nameElement;
+	return nameElement;
 }
 ;
