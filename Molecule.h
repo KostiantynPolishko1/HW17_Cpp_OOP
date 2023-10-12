@@ -28,6 +28,7 @@ public:
 		sumAtomMass(molecule.sumAtomMass),
 		formulaElement(molecule.formulaElement), nameElement(molecule.nameElement) {}
 
+
 #pragma region operators
 	Molecule operator+ (const Molecule& molecule);
 	Molecule operator+ (const Atom& atom1);

@@ -32,6 +32,7 @@ int main(void) {
 	moleculeOutPut(CO2);
 
 	cout << "\n8 Molecule H2O\n";
+
 	Molecule H2O(Molecule(Atom(1),2) + O);
 	moleculeOutPut(H2O);
 
